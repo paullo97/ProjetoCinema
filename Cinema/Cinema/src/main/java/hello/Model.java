@@ -25,6 +25,18 @@ public class Model {
 		}
 		return null;
 	}
+	
+	public List<Sala> buscarSalaPorFilme(String nomeFilme) {
+		List<Sala> salasEncontradas2 = new LinkedList<Sala>();
+		
+		for(Sala sala:salas) {
+			if(sala.getFilme().getNomeFilme().equals(nomeFilme)) {
+				salasEncontradas2.add(sala);
+			}
+		}
+		return salasEncontradas2;
+	}
+	
 	public List<Sala> buscarTodasSalas(){
 		List<Sala> salasEncontradas = new LinkedList<Sala>();
 		
@@ -40,15 +52,6 @@ public class Model {
 		}
 		return usuariosEncontrados;
 	}
-//	public List<Carro> buscarEspecificacao(Especificacao esp){
-//		List<Carro> carrosEncontrados = new LinkedList<Carro>();
-//		
-//		for(Carro carro:carros){
-//			 if(esp.comparar(carro.getEspc())) carrosEncontrados.add(carro);
-//		}
-//		
-//		return carrosEncontrados;		
-//	}
 	public List<Usuario> getUsuarios(){
 		return usuarios;
 	}
@@ -56,10 +59,18 @@ public class Model {
 	public List<Sala> getSalas(){
 		return salas;
 	}
-	//public void vincularUsuarioCadeira(Sala sala) {
-		//sala.getCadeiras()
-		
-	//}
+	
+	public void escolherSala(int numSala, String letra, int numero) {
+		for(Sala sala:salas) {
+			if(sala.getNumeroSala() == numSala) {
+				for(Cadeira cadeira: sala.getCadeiras()) {
+					if(cadeira.getLetra().equals(letra) && cadeira.getNumero() == numero) {
+						cadeira.setReservada(true);
+					}
+				}
+			}
+		}
+	}
 	
 
 

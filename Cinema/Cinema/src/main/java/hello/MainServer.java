@@ -35,6 +35,7 @@ public class MainServer {
 		controller.buscarSalas();
 		controller.buscarUsuario();
 		controller.buscarUsuarios();
+		controller.buscarSalaPorFilme();
 		
 		//controller.buscarCarro();
 		
@@ -42,6 +43,7 @@ public class MainServer {
     }
     public static void instalarSala(){
     	model.addSala(new Sala(1, new Filme("Homem Formiga", 2014, "E mexilhaozinho", 14)));
+    	model.addSala(new Sala(2, new Filme("Homem Formiga", 2014, "E mexilhaozinho", 14)));
 
     }
     

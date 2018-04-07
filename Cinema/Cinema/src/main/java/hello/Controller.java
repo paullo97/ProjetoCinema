@@ -23,6 +23,14 @@ public class Controller {
 		});
 	}
 	
+	public void buscarSalaPorFilme() {
+		get("/salaFilme/:nomeFilme", (req, res) -> {
+			String nomeFilme = req.params(":nomeFilme");
+			List<Sala> salasEncontradas2 = model.buscarSalaPorFilme(nomeFilme);
+			return new Gson().toJson(salasEncontradas2);
+		});
+	}
+	
 	public void buscarSalas() { //Retorna todas as salas
 		get("/salas", (req, res) -> { //ta funfando
 			List<Sala> salasEncontradas = model.buscarTodasSalas();
@@ -53,14 +61,17 @@ public class Controller {
 			return "";
 		});
 	}
-	
+
 	public void adicionarUsuario() { //funfo
-		get("/usuario/addUsuario/:nome/:cpf", (req, res)->{
+		get("/usuario/addUsuario/:nome/:cpf/:numSala/:letra/:numero", (req, res)->{
 			Usuario usuario = new Usuario(req.params(":nome"),Integer.parseInt((req.params(":cpf"))));
+			int numSala = Integer.parseInt(req.params(":numSala"));
+			int numero = Integer.parseInt(req.params(":numero"));
+			String letra = req.params(":letra");
+			
+			model.escolherSala(numSala, letra, numero);
 			model.addUsuario(usuario);
 			return "";
 		});
 	}
-	
-
 }

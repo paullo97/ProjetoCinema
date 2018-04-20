@@ -1,2 +1,3 @@
 # ProjetoCinema
-Repositório para a criação do projeto de Criação de um sistema para Cinema. 
+
+Projeto de Engenharia de software que está em construção onde foi criado um Cinema utilizando Java, Jquery e Bootstrap.

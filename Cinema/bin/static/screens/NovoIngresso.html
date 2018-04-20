@@ -1,0 +1,82 @@
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/offcanvas.css">
+  <!--Personal css-->
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+<body class="bg-light">
+    <!--Header start-->
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #7331d8;">
+        <a class="navbar-brand mb-0 h1" href="#">Cinestation</a>
+    </nav>
+
+    <div class="nav-scroller bg-white box-shadow">
+        <nav class="nav nav-underline">
+            <a class="nav-link" href="../index.html">Home</a>
+            <a class="nav-link active" href="NovoIngresso.html">Novo ingresso</a>
+            <a class="nav-link" href="NovoFilme.html">Novo filme</a>
+        </nav>
+    </div>
+    <!--Header end-->
+    <main role="main" class="container">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-md-8">
+                    <h3 class="main-title">Novo ingresso</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="iptNome">Nome</label>
+                                    <input id="iptNome" type="text" class="form-control" placeholder="Entre com o primeiro nome">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="iptCpf">CPF</label>
+                                    <input id="iptCpf" type="text" class="form-control" placeholder="Entre com o cpf">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="iptNumSala">Numero da sala</label>
+                                    <input id="iptNumSala" type="text" class="form-control" placeholder="Entre com o numero da sala">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="iptLetra">Letra da cadeira</label>
+                                    <input id="iptLetra" type="text" class="form-control" placeholder="Entre com a letra da cadeira">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="iptNumero">Numero da cadeira</label>
+                                    <input id="iptNumero" type="email" class="form-control" placeholder="Entre com o numero da cadeira">
+                                </div>
+                            </div>
+                            <div class="btn-space row justify-content-end">
+                                <button onclick="cadastrarUsuario()" id="addUsuario" type="button" class="btn btn-outline-success">Cadastrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="movie-search input-group mb-3">
+                        <h3 class="main-title">Buscar salas:</h3>
+                        <div class="input-group mb-3">
+                            <input id="nomeFilme" type="text" class="form-control" placeholder="Digite o nome do filme">
+                                <div class="input-group-append">
+                                    <button id="btnBuscarSala" class="btn btn-outline-primary" type="button">Buscar</button>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="movie-feed"></div>
+                </div>
+            </div>
+      </div>
+  </main>
+  <!--Body end-->
+  <script src="../js/jquery.js"></script>
+  <script src="../js/index.js"></script>
+</body>
+</html>

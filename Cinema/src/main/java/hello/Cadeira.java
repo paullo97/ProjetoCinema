@@ -4,9 +4,8 @@ public class Cadeira {
 	private String letra;
 	private int numero;
 	private boolean reservada;
-	private Usuario usuario;
 	
-	public Cadeira (String letra, int numero,boolean reservada) {
+	public Cadeira (String letra, int numero, boolean reservada) {
 		this.setLetra(letra);
 		this.setNumero(numero);
 		this.setReservada(reservada);
@@ -34,13 +33,5 @@ public class Cadeira {
 
 	public void setReservada(boolean reservada) {
 		this.reservada = reservada;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 }

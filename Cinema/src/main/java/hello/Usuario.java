@@ -2,9 +2,9 @@ package hello;
 
 public class Usuario {
 	private String nome;
-	private int cpf;
+	private String cpf;
 	
-	public Usuario(String nome, int cpf){
+	public Usuario(String nome, String cpf){
 		this.setNome(nome);
 		this.setCpf(cpf);
 	}
@@ -15,10 +15,10 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	

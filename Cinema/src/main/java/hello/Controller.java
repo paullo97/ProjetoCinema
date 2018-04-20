@@ -10,60 +10,78 @@ public class Controller {
 	
 	private Model model;
 	
-	
 	public Controller(Model model){
 		this.model = model;
 	}
-	public void buscarSala() {
-		
-		get("/sala/:numeroSala", (req,res) ->{
-			
+	
+	//Buscar
+	public void buscarSala() { //Busca uma sala por numero da sala
+		get("/sala/:numeroSala", (req,res) ->{ //ta funfando
 			int numerosala = Integer.parseInt(req.params(":numeroSala"));
-			Sala salasEncontradas = model.buscarSala(numerosala);
+			Sala salaEncontrada = model.buscarSala(numerosala);
+			return new Gson().toJson(salaEncontrada);
+		});
+	}
+	
+	public void buscarSalaPorFilme() {
+		get("/salaFilme/:nomeFilme", (req, res) -> {
+			String nomeFilme = req.params(":nomeFilme");
+			List<Sala> salasEncontradas2 = model.buscarSalaPorFilme(nomeFilme);
+			return new Gson().toJson(salasEncontradas2);
+		});
+	}
+	
+	public void buscarSalas() { //Retorna todas as salas
+		get("/salas", (req, res) -> { //ta funfando
+			List<Sala> salasEncontradas = model.buscarTodasSalas();
 			return new Gson().toJson(salasEncontradas);
 		});
 	}
 	
-	public void buscarUsuario() {
-		
-		get("/usuario", (req, res) -> {
+	public void buscarUsuario() { //Busca um usuario por cpf
+		get("/usuario/:cpf", (req, res) -> { //funfo
 			int numeroCpf = Integer.parseInt(req.params(":cpf"));
 			Usuario usuarioEncontrado = model.buscarUsuario(numeroCpf);
 			return new Gson().toJson(usuarioEncontrado);
 		});
 	}
 	
-	public void bucasrUsuarios() {
-		get("/usuario/muitos", (req, res) -> {
-			int numeroCpf = Integer.parseInt(req.params(":cpf"));
-			Usuario usu = new Usuario(req.params(":nome"), numeroCpf);
-			
-			List<Usuario> usuariosEncontrados = model.buscarTodosUsuarios(usu);
+	public void buscarUsuarios() { //Retorna todos os usuarios
+		get("/usuarios", (req, res) -> {
+			List<Usuario> usuariosEncontrados = model.buscarTodosUsuarios();
 			return new Gson().toJson(usuariosEncontrados);
 		});
 	}
-	public void adicionarSala(){
-		get("/sala/add|Sala", (req, res) -> {
+	
+	//Adicionar
+	public void adicionarSala() { //funfo
+		get("/sala/addSala/:numeroSala/:nomeFilme/:ano/:descr/:horario", (req, res) -> {
 			Sala sala = new Sala(Integer.parseInt(req.params(":numeroSala")), new Filme(req.params(":nomeFilme"),Integer.parseInt(req.params(":ano")), req.params(":descr"),Integer.parseInt(req.params(":horario"))));
 			model.addSala(sala);
 			return "";
 		});
 	}
-	
-	public void adicionarUsuario(){
-		get("/usuario/addUsuario", (req, res)->{
-			Usuario usuario = new Usuario(req.params(":nome"),Integer.parseInt((req.params(":cpf"))));
+
+	public void adicionarUsuario() { //funfo
+		get("/usuario/addUsuario/:nome/:cpf/:numSala/:letra/:numero", (req, res)->{
+			Usuario usuario = new Usuario(req.params(":nome"),(req.params(":cpf")));
+			int numSala = Integer.parseInt(req.params(":numSala"));
+			int numero = Integer.parseInt(req.params(":numero"));
+			String letra = req.params(":letra");
+			
+			model.escolherSala(numSala, letra, numero);
 			model.addUsuario(usuario);
 			return "";
 		});
 	}
-	/*public void buscarCarro(){
-		get("/carro/:modelo/:marca/:cor", (req, res) -> {
-		
-			Especificacao espec = new Especificacao(req.params(":modelo"), req.params(":marca"), req.params(":cor"));	
-			List<Carro> carrosEncontrados = model.buscarEspecificacao(espec);	
-			return new Gson().toJson(carrosEncontrados);
+	
+	//Remover
+	public void excluirUsuario() {
+		get("/usuario/excluirUsuario/:cpf", (req, res)->{
+			String cpf = req.params(":cpf");
 			
+			model.excluirUsuario(cpf);
+			return "";
 		});
-	}*/
+	}
 }

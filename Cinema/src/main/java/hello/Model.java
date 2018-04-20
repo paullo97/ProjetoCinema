@@ -4,15 +4,26 @@ import java.util.LinkedList;
 public class Model {
 	private List<Usuario> usuarios = new LinkedList<Usuario>();
 	private List<Sala> salas = new LinkedList<Sala>();
+	
 	public void addUsuario(Usuario usuario) {
 		usuarios.add(usuario);
 	}
+	
+	public void excluirUsuario(String cpf) {
+		for(Usuario usuario:usuarios) {
+			if(usuario.getCpf().equals(cpf)) {
+				usuarios.remove(usuario);
+			}
+		}
+	}
+	
 	public void addSala(Sala sala) {
 		salas.add(sala);
 	}
+	
 	public Usuario buscarUsuario(int cpf) {
 		for(Usuario usuario:usuarios) {
-			if(usuario.getCpf() == cpf) return usuario;
+			if(usuario.getCpf().equals(cpf)) return usuario;
 		}
 		return null;
 	}
@@ -22,8 +33,21 @@ public class Model {
 		}
 		return null;
 	}
+	
+	public List<Sala> buscarSalaPorFilme(String nomeFilme) {
+		List<Sala> salasEncontradas2 = new LinkedList<Sala>();
+		
+		for(Sala sala:salas) {
+			if(sala.getFilme().getNomeFilme().equals(nomeFilme)) {
+				salasEncontradas2.add(sala);
+			}
+		}
+		return salasEncontradas2;
+	}
+	
 	public List<Sala> buscarTodasSalas(){
 		List<Sala> salasEncontradas = new LinkedList<Sala>();
+		
 		for(Sala sala:salas) {
 			salasEncontradas.add(sala);
 		}
@@ -36,15 +60,6 @@ public class Model {
 		}
 		return usuariosEncontrados;
 	}
-//	public List<Carro> buscarEspecificacao(Especificacao esp){
-//		List<Carro> carrosEncontrados = new LinkedList<Carro>();
-//		
-//		for(Carro carro:carros){
-//			 if(esp.comparar(carro.getEspc())) carrosEncontrados.add(carro);
-//		}
-//		
-//		return carrosEncontrados;		
-//	}
 	public List<Usuario> getUsuarios(){
 		return usuarios;
 	}
@@ -52,6 +67,19 @@ public class Model {
 	public List<Sala> getSalas(){
 		return salas;
 	}
+	
+	public void escolherSala(int numSala, String letra, int numero) {
+		for(Sala sala:salas) {
+			if(sala.getNumeroSala() == numSala) {
+				for(Cadeira cadeira: sala.getCadeiras()) {
+					if(cadeira.getLetra().equals(letra) && cadeira.getNumero() == numero) {
+						cadeira.setReservada(true);
+					}
+				}
+			}
+		}
+	}
+	
 
 
 }

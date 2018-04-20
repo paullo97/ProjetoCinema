@@ -1,119 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Estacionamento</title>
-	
-    
-	<script src="js/jquery.js"></script>
-	
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/offcanvas.css">
+  <!--Personal css-->
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="bg-light" onload="getAllInfo()">
+  <!--Header start-->
+  <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #7331d8;">
+    <a class="navbar-brand mb-0 h1" href="#">Cinestation</a>
+  </nav>
 
-	<link href="css/bootstrap.min.css" rel=stylesheet>
-	
-	
-	<script>
-		$(document).ready(function(){
-			
+  <div class="nav-scroller bg-white box-shadow">
+    <nav class="nav nav-underline">
+      <a class="nav-link active" href="index.html">Home</a>
+      <a class="nav-link" href="screens/NovoIngresso.html">Novo ingresso</a>
+      <a class="nav-link" href="screens/NovoFilme.html">Novo filme</a>
+    </nav>
+  </div>
+  <!--Header end-->
+  <main role="main" class="container">
+    <div class="container">
+      <div class="row aux2">
+        <div class="col-md-5 center">
+          <h3 class="main-title">Usuários</h3>
+          <!--<div class="input-group mb-3">
+            <input id="nomeFilme" type="text" class="form-control" placeholder="Digite o nome do filme">
+            <div class="input-group-append">
+              <button id="btnBuscarSala" class="btn btn-outline-primary" type="button">Buscar</button>
+            </div>
+          </div>-->
 
-			$("#busca").click(function() {
-
-				var modelo = $( "#modelo option:selected" ).text();
-				var marca = $( "#marca option:selected" ).text();
-				var cor = $( "#cor option:selected" ).text();
-					
-				$("#dadosCarro").empty();
-					
-				var url = "/carro/"+modelo+"/"+marca+"/"+cor+"";
-					
-
-				$.getJSON(url, function(data) {
-						
-						var itens = [];
-						
-						$.each(data, function(i){
-						
-							itens.push("<tr> <td>"+ this.placa +"</td><td>"+ this.espc.modelo + "</td><td>"+ this.espc.marca + "</td><td>"+ this.espc.cor + "</td></tr>");
-							
-						});
-									
-						$("#dadosCarro").append(itens);
-						
-				});
-
-			});
-
-		});
-
-	</script>
-
-   
-  </head>
-
-
-  <body>
-		
-
-  		<div id="painelBusca">
+          <div class="user-feed">
             
-		
-		
-            <div class="form-group col-md-4">
-                <label>Modelo</label>
-                <select id="modelo" class="input-large form-control">
-                    <option value="" selected="selected">Escolha o ano</option>
-                    <option value="gol">gol</option>
-                    <option value="fox">fox</option>
-                    <option value="fusca">fusca</option>
-                    
-                </select>
-            </div>
-		
-		
-		
-            <div class="form-group col-md-4">
-                <label>Marca</label>
-                <select id="marca" class="input-large form-control">
-                    <option value="" selected="selected">Escolha o ano</option>
-                    <option value="vw">vw</option>
-                    <option value="fiat">fiat</option>
-                    <option value="ferrari">ferrari</option>
-                    
-                </select>
-            </div>
-		
-		
-		
-            <div class="form-group col-md-4">
-                <label>Cor</label>
-                <select id="cor" class="input-large form-control">
-                    <option value="" selected="selected">Escolha o periodo</option>
-                    <option value="vermelho">vermelho</option>
-                    <option value="verde">verde</option>
-                    
-                </select>
-            </div>
-		
-		</div>
-		
-		<button id="busca" class="btn btn-primary col-md-offset-5">Buscar</button>
-		
-		<table class="table table-bordered"> 
-			<caption>Carros</caption>
-				<thead>
-					<tr> 
-						<th>Placa</th>
-						<th>Modelo</th> 
-						<th>Marca</th> 
-						<th>Cor</th> 
-					</tr> 
-				</thead> 
-				
-				<tbody id="dadosCarro"> 
-					
-				</tbody> 
-		</table>
+          </div>
 
-		
-  </body>
-  
+        </div>
+        <div class="col-md-5 center">
+          <h3 class="main-title">Salas</h3>
+          <!--<div class="input-group mb-3">
+            <input id="nomeFilme" type="text" class="form-control" placeholder="Digite o nome do filme">
+            <div class="input-group-append">
+              <button id="btnBuscarSala" class="btn btn-outline-primary" type="button">Buscar</button>
+            </div>
+          </div>-->
+
+          <div  id="roomfeed" class="room-feed">
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+ 
+  <!--Body end-->
+  <script src="js/jquery.js"></script>
+  <script src="js/index.js"></script>
+</body>
 </html>

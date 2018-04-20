@@ -15,7 +15,7 @@ public class MainServer {
         if (process.environment().get("PORT") != null) {
             port = Integer.parseInt(process.environment().get("PORT"));
         } else {
-            port = 8080;
+            port = 1234;
         }
         port(port);
 
@@ -23,17 +23,32 @@ public class MainServer {
 		staticFileLocation("/static");
 
 		//inicializarCarros();
+		instalarSala();
+		inicializarUsuarios();
 
 		Controller controller = new Controller(model);
+		
+		controller.adicionarSala();
+		controller.adicionarUsuario();
+		
+		controller.buscarSala();
+		controller.buscarSalas();
+		controller.buscarUsuario();
+		controller.buscarUsuarios();
+		controller.buscarSalaPorFilme();
 		
 		//controller.buscarCarro();
 		
 		
     }
-    public static void InstalarSala(){
-    	
-    	
-    	
+    public static void instalarSala(){
+    	model.addSala(new Sala(1, new Filme("Homem Formiga", 2014, "E mexilhaozinho", 14)));
+    	model.addSala(new Sala(2, new Filme("Homem Formiga", 2014, "E mexilhaozinho", 14)));
+
+    }
+    
+    public static void inicializarUsuarios() {
+    	model.addUsuario(new Usuario("Jonathan", "453384345"));
     }
     
     /*public static void inicializarCarros(){

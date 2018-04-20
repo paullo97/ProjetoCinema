@@ -1,0 +1,71 @@
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/offcanvas.css">
+  <!--Personal css-->
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+<body class="bg-light">
+  <!--Header start-->
+  <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #7331d8;">
+    <a class="navbar-brand mb-0 h1" href="#">Cinestation</a>
+  </nav>
+
+  <div class="nav-scroller bg-white box-shadow">
+    <nav class="nav nav-underline">
+      <a class="nav-link" href="../index.html">Home</a>
+      <a class="nav-link" href="NovoIngresso.html">Novo ingresso</a>
+      <a class="nav-link active" href="NovoFilme.html">Novo filme</a>
+    </nav>
+  </div>
+  <!--Header end-->
+  <main role="main" class="container">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-md-12">
+          <h3 class="main-title">Novo filme</h3>
+          <div class="card">
+            <div class="card-body">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="iptNomeFilme">Nome do filme</label>
+                  <input id="iptNomeFilme" type="text" class="form-control" placeholder="Entre com o nome do filme">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="iptNumeroSala">Numero da sala</label>
+                  <input id="iptNumeroSala" type="text" class="form-control" placeholder="Entre com numero da sala">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label for="iptDescricao">Descricao</label>
+                  <input id="iptDescricao" type="text" class="form-control" placeholder="Descricao do filme">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="iptAno">Ano do filme</label>
+                  <input id="iptAno" type="text" class="form-control" placeholder="Entre com o ano do filme">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="iptHorario">Horario do filme</label>
+                  <input id="iptHorario" type="text" class="form-control" placeholder="Entre com o horario do filme">
+                </div>
+              </div>
+              <div class="btn-space row justify-content-end">
+                <button onclick="cadastrarFilme()" id="addSala" type="button" class="btn btn-outline-success">Cadastrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+ 
+  <!--Body end-->
+  <script src="../js/jquery.js"></script>
+  <script src="../js/index.js"></script>
+</body>
+</html>
